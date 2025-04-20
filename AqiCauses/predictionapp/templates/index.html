@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Air Quality Case Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #d0e6f7, #f7f9fc);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 750px;
+            background: #ffffff;
+            margin: 60px auto;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 35px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            display: block;
+            color: #34495e;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        button {
+            padding: 14px;
+            background-color: #2ecc71;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Air Quality Case Predictor</h1>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="pm25">PM2.5</label>
+                <input type="number" step="any" id="pm25" name="PM2.5" placeholder="e.g. 100.03" required>
+            </div>
+
+            <div>
+                <label for="pm10">PM10</label>
+                <input type="number" step="any" id="pm10" name="PM10" placeholder="e.g. 98.99" required>
+            </div>
+
+            <div>
+                <label for="no2">NO2</label>
+                <input type="number" step="any" id="no2" name="NO2" placeholder="e.g. 101.44" required>
+            </div>
+
+            <div>
+                <label for="so2">SO2</label>
+                <input type="number" step="any" id="so2" name="SO2" placeholder="e.g. 53.14" required>
+            </div>
+
+            <div>
+                <label for="AQI">AQI</label>
+                <input type="number" step="any" id="AQI" name="AQI" placeholder="e.g. 30.80" required>
+            </div>
+
+            <div>
+                <label for="o3">O3</label>
+                <input type="number" step="any" id="o3" name="O3" placeholder="e.g. 11.44" required>
+            </div>
+
+            <div>
+                <label for="temperature">Temperature (°C)</label>
+                <input type="number" step="any" id="temperature" name="Temperature" placeholder="e.g. 18.59" required>
+            </div>
+
+            <div>
+                <label for="humidity">Humidity (%)</label>
+                <input type="number" step="any" id="humidity" name="Humidity" placeholder="e.g. 60.00" required>
+            </div>
+
+            <div class="full-width">
+                <label for="windspeed">Wind Speed (m/s)</label>
+                <input type="number" step="any" id="windspeed" name="WindSpeed" placeholder="e.g. 2.39" required>
+            </div>
+
+            <div class="full-width">
+                <button type="submit">Predict</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

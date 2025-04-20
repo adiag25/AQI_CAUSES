@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Air Quality Prediction Result</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ff4d4d; /* red background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .result-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .error {
+            background-color: rgba(255, 0, 0, 0.7);
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .back-btn {
+            margin-top: 25px;
+            background-color: white;
+            color: red;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background-color: #ffdddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h1>Prediction Result</h1>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% elif respiratory_cases and cardio_cases %}
+            <p><strong>Respiratory Cases:</strong> {{ respiratory_cases }}</p>
+            <p><strong>Cardiovascular Cases:</strong> {{ cardio_cases }}</p>
+        {% else %}
+            <p>No prediction data available.</p>
+        {% endif %}
+
+        <form method="get" action="">
+            <button type="submit" class="back-btn">Back to Form</button>
+        </form>
+    </div>
+</body>
+</html>
